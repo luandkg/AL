@@ -43,7 +43,43 @@ public class Vetor<T> {
         mDados[eIndice] = eValor;
     }
 
-    public void aumentar(int eMais) {
+
+
+    public void setVarios(int eIndice,T eValor1, T eValor2){
+
+        set(eIndice,eValor1);
+        set(eIndice + 1,eValor2);
+
+    }
+
+    public void setVarios(int eIndice,T eValor1, T eValor2,T eValor3){
+
+        set(eIndice,eValor1);
+        set(eIndice + 1,eValor2);
+        set(eIndice + 2,eValor3);
+
+    }
+
+    public void setVarios(int eIndice,T eValor1, T eValor2,T eValor3,T eValor4){
+
+        set(eIndice,eValor1);
+        set(eIndice + 1,eValor2);
+        set(eIndice + 2,eValor3);
+        set(eIndice + 3,eValor4);
+
+    }
+
+    public void setVarios(int eIndice,T eValor1, T eValor2,T eValor3,T eValor4,T eValor5){
+
+        set(eIndice,eValor1);
+        set(eIndice + 1,eValor2);
+        set(eIndice + 2,eValor3);
+        set(eIndice + 3,eValor4);
+        set(eIndice + 4,eValor5);
+
+    }
+
+    public void aumentar(int eMais, T eInicial) {
 
         if (eMais <= 0) {
             throw new IllegalArgumentException("O aumento precisa ser um numero maior que 0 : " + eMais);
@@ -54,6 +90,10 @@ public class Vetor<T> {
 
         for (int i = 0; i < mCapacidade; i++) {
             mDadosMais[i] = mDados[i];
+        }
+
+        for (int i = mCapacidade; i < eNovaCapacidade; i++) {
+            mDadosMais[i] = eInicial;
         }
 
         mDados = mDadosMais;
@@ -69,7 +109,7 @@ public class Vetor<T> {
 
         int eNovaCapacidade = mCapacidade - eMenos;
         if (eNovaCapacidade <= 0) {
-            throw new IllegalArgumentException("Essa reducao nao pode acontecer que o tamanho ficara menor ou igual a 0");
+            throw new IllegalArgumentException("Essa reducao nao pode acontecer que o tamanho ficara ficara : " + eNovaCapacidade);
         }
 
         T mDadosMenos[] = (T[]) new Object[eNovaCapacidade];
