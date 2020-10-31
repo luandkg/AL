@@ -25,6 +25,8 @@ public class AppVetor {
 
         ordenarVetor();
 
+        embaralharVetor();
+
         System.out.println("#######################################################################################");
 
     }
@@ -183,15 +185,50 @@ public class AppVetor {
         System.out.println("\t\t - Vetor A = " + getVetor(Vetor_A));
 
         System.out.println("\t\t\t - Ordenar Crescente");
-
         Vetor_A.ordenarCrescente(new OrdenadorInt());
-
         System.out.println("\t\t\t - Vetor A = " + getVetor(Vetor_A));
 
+        System.out.println("\t\t\t - Embaralhar");
+        Vetor_A.embaralhar();
+        System.out.println("\t\t\t - Vetor A = " + getVetor(Vetor_A));
+
+
         System.out.println("\t\t\t - Ordenar Decrescente");
-
         Vetor_A.ordenarDecrescente(new OrdenadorInt());
+        System.out.println("\t\t\t - Vetor A = " + getVetor(Vetor_A));
 
+
+        System.out.println("\t\t\t - Capacidade : " + Vetor_A.getCapacidade());
+
+
+    }
+
+    public void embaralharVetor() {
+
+        System.out.println("\t VETOR :: EMBARALHAR");
+
+
+        Vetor<Integer> Vetor_A = new Vetor<Integer>(5,0);
+
+        Vetor_A.set(0,10);
+        Vetor_A.set(1,20);
+        Vetor_A.set(2,30);
+        Vetor_A.set(3,40);
+        Vetor_A.set(4,50);
+
+        System.out.println("\t\t - Vetor A = " + getVetor(Vetor_A));
+
+        System.out.println("\t\t\t - Embaralhar");
+        Vetor_A.embaralhar();
+        System.out.println("\t\t\t - Vetor A = " + getVetor(Vetor_A));
+
+        System.out.println("\t\t\t - Embaralhar");
+        Vetor_A.embaralhar();
+        System.out.println("\t\t\t - Vetor A = " + getVetor(Vetor_A));
+
+
+        System.out.println("\t\t\t - Embaralhar");
+        Vetor_A.embaralhar();
         System.out.println("\t\t\t - Vetor A = " + getVetor(Vetor_A));
 
 

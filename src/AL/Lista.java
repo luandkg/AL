@@ -522,10 +522,7 @@ public class Lista<T> {
 
         for (int i = 0; i < tam; i++) {
 
-            int j = rd.nextInt(tam);
-
-            trocar(i, j);
-
+            trocar(i, rd.nextInt(tam));
 
         }
 

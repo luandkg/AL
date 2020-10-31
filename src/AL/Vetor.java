@@ -1,5 +1,7 @@
 package AL;
 
+import java.util.Random;
+
 public class Vetor<T> {
 
     private T mDados[];
@@ -162,6 +164,20 @@ public class Vetor<T> {
             }
         }
 
+
+    }
+
+    public void embaralhar() {
+
+        int tam = mCapacidade;
+
+        Random rd = new Random();
+
+        for (int i = 0; i < tam; i++) {
+
+            trocar(i, rd.nextInt(tam));
+
+        }
 
     }
 

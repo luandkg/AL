@@ -13,6 +13,8 @@
         - get
         - aumentar
         - reduzir
+        - Ordenar Crescente
+        - Ordenar Decrescente
         
   ## LISTA   
   
@@ -29,8 +31,39 @@
         - Esta Limitada
         - GetLimite
         - Para Completar
+        - Ordenar Crescente
+        - Ordenar Decrescente
+        - Embaralhar
+        
+        
+  ## UNICA
+    
+        - Criar
+        - Adiciionar
+        - Remover
+        - getQuantidade
+        - Get
+        - Set
+        - Esta Vazia
+        - Possui Objetos
         
   ## ITERADOR
   
         - Vetor
         - Lista
+        
+  ## ITERADOR COMPARAVEL
+  
+        - Unica
+        
+  ## COMPARADOR
+  
+        - Comparador Abstrato
+        - Comparador Int
+        - Comparador String
+        
+  ## ORDENADOR
+  
+        - Ordenador Abstrato
+        - Ordenador Int
+        

@@ -24,6 +24,7 @@ public class AppLista {
 
         ordenarLista();
 
+        embaralharLista();
 
         System.out.println("#######################################################################################");
 
@@ -193,6 +194,39 @@ public class AppLista {
 
     }
 
+    public void embaralharLista() {
+
+        System.out.println("\t LISTA :: EMBARALHAR");
+
+
+        Lista<Integer> Lista_A = new Lista<Integer>();
+
+        Lista_A.adicionar(10);
+        Lista_A.adicionar(20);
+        Lista_A.adicionar(30);
+        Lista_A.adicionar(40);
+        Lista_A.adicionar(50);
+
+        System.out.println("\t\t - Lista A = " + getLista(Lista_A));
+
+        System.out.println("\t\t\t - Embaralhar");
+        Lista_A.embaralhar();
+        System.out.println("\t\t\t - Lista A = " + getLista(Lista_A));
+
+        System.out.println("\t\t\t - Embaralhar");
+        Lista_A.embaralhar();
+        System.out.println("\t\t\t - Lista A = " + getLista(Lista_A));
+
+
+        System.out.println("\t\t\t - Embaralhar");
+        Lista_A.embaralhar();
+        System.out.println("\t\t\t - Lista A = " + getLista(Lista_A));
+
+
+        System.out.println("\t\t\t - Capacidade : " + Lista_A.getQuantidade());
+
+
+    }
 
     public String getLista(Lista<Integer> mLista){
         String texto = "";
