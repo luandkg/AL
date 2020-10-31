@@ -1,8 +1,6 @@
 package AL;
 
-import java.util.Random;
-
-public class Lista<T> {
+public class Unica<T, C extends Comparador<T>> {
 
     private class Item {
 
@@ -36,16 +34,15 @@ public class Lista<T> {
     private Item mUltimo;
     private int mQuantidade;
 
-    private boolean mLimitada;
-    private int mLimite;
+    private C mComparador;
 
-    public Lista() {
+    public Unica(C eComparador) {
 
         mPrimeiro = null;
         mUltimo = null;
         mQuantidade = 0;
-        mLimitada = false;
-        mLimite = 0;
+
+        mComparador = eComparador;
 
         //System.out.println("Construindo Lista");
     }
@@ -54,35 +51,46 @@ public class Lista<T> {
 
         boolean adicionando = false;
 
-        if (mLimitada) {
 
-            if (mQuantidade < mLimite) {
-                adicionando = true;
-            } else {
-                throw new IllegalArgumentException("A lista esta cheia !");
-            }
+        adicionando = true;
 
-        } else {
-            adicionando = true;
-        }
 
         if (adicionando) {
 
-            Item mAdicionar = new Item(eValor);
 
-            if (mPrimeiro == null) {
+            Item mCorrente = mPrimeiro;
 
-                mPrimeiro = mAdicionar;
+            boolean existe = false;
 
-            } else {
-
-                mUltimo.setProximo(mAdicionar);
+            while (mCorrente != null) {
+                if (mComparador.isIgual(mCorrente.getValor(), eValor)) {
+                    existe = true;
+                }
+                mCorrente = mCorrente.getProximo();
             }
 
-            mUltimo = mAdicionar;
+            if (!existe){
 
-            //System.out.println("Adicionando " + eValor);
-            mQuantidade += 1;
+
+                Item mAdicionar = new Item(eValor);
+
+                if (mPrimeiro == null) {
+
+                    mPrimeiro = mAdicionar;
+
+                } else {
+
+                    mUltimo.setProximo(mAdicionar);
+                }
+
+                mUltimo = mAdicionar;
+
+                //System.out.println("Adicionando " + eValor);
+                mQuantidade += 1;
+
+            }
+
+
 
         }
 
@@ -359,176 +367,6 @@ public class Lista<T> {
         }
 
         return retorno;
-    }
-
-
-    public void limitar(int eLimite) {
-
-        if (mQuantidade <= eLimite) {
-            mLimitada = true;
-            mLimite = eLimite;
-        } else {
-            throw new IllegalArgumentException("A quantidade de objetos e maior que o limite !");
-        }
-
-    }
-
-    public void desLimitar() {
-        mLimitada = false;
-        mLimite = 0;
-    }
-
-
-    public boolean estaLimitada() {
-        return mLimitada;
-    }
-
-    public int getLimite() {
-        return mLimite;
-    }
-
-    public boolean estaCheia() {
-        if (mLimitada) {
-            return mQuantidade >= mLimite;
-        } else {
-            return false;
-        }
-    }
-
-    public void aumentarLimite(int eAumento) {
-
-
-    }
-
-    public int completar() {
-        if (mLimitada) {
-
-            return mLimite - mQuantidade;
-
-        } else {
-            return 0;
-        }
-    }
-
-
-    public void trocar(int i1, int i2) {
-
-        if (i1 < 0) {
-            throw new IllegalArgumentException("Indice invalido : " + i1);
-        }
-
-        if (i2 < 0) {
-            throw new IllegalArgumentException("Indice invalido : " + i2);
-        }
-
-        if (i1 >= mQuantidade) {
-            throw new IllegalArgumentException("Indice invalido : " + i1);
-        }
-
-        if (i2 >= mQuantidade) {
-            throw new IllegalArgumentException("Indice invalido : " + i2);
-        }
-
-        if (i1 == i2) {
-            return;
-        }
-
-
-        int indice = 0;
-        int t = 0;
-
-        Item mCorrente = mPrimeiro;
-
-        Item Item_01 = null;
-        Item Item_02 = null;
-
-        boolean enc_1 = false;
-        boolean enc_2 = false;
-
-        while (mCorrente != null) {
-
-            if (indice == i1) {
-                t += 1;
-                Item_01 = mCorrente;
-                enc_1 = true;
-            } else if (indice == i2) {
-                t += 1;
-                Item_02 = mCorrente;
-                enc_2 = true;
-            }
-
-
-            if (t > 1) {
-
-                T auxiliar = Item_01.getValor();
-
-                Item_01.setValor(Item_02.getValor());
-                Item_02.setValor(auxiliar);
-
-                break;
-            }
-
-            mCorrente = mCorrente.getProximo();
-            indice += 1;
-        }
-
-        if (!enc_1) {
-            throw new IllegalArgumentException("Index nao encontrado : " + i1);
-        }
-
-        if (!enc_2) {
-            throw new IllegalArgumentException("Index nao encontrado : " + i2);
-        }
-    }
-
-
-    public void ordenarCrescente(Ordenador<T> mOrdenador) {
-
-        int tam = mQuantidade;
-
-        for (int i = 0; i < tam; i++) {
-            for (int j = 0; j < tam - 1; j++) {
-                if (mOrdenador.isMaior(getValor(j), getValor(j + 1))) {
-
-                    trocar(j, j + 1);
-                }
-            }
-        }
-
-
-    }
-
-    public void ordenarDecrescente(Ordenador<T> mOrdenador) {
-
-        int tam = mQuantidade;
-
-        for (int i = 0; i < tam; i++) {
-            for (int j = 0; j < tam - 1; j++) {
-                if (mOrdenador.isMenor(getValor(j), getValor(j + 1))) {
-
-                    trocar(j, j + 1);
-                }
-            }
-        }
-
-
-    }
-
-    public void embaralhar() {
-
-        int tam = mQuantidade;
-
-        Random rd = new Random();
-
-        for (int i = 0; i < tam; i++) {
-
-            int j = rd.nextInt(tam);
-
-            trocar(i, j);
-
-
-        }
-
     }
 
 

@@ -2,6 +2,8 @@ package App;
 
 import AL.Iterador;
 import AL.Lista;
+import AL.OrdenadorInt;
+import AL.Vetor;
 
 public class AppLista {
 
@@ -17,6 +19,10 @@ public class AppLista {
         criarListaLimitada();
 
         listarLista();
+
+        trocarLista();
+
+        ordenarLista();
 
 
         System.out.println("#######################################################################################");
@@ -113,6 +119,77 @@ public class AppLista {
         }
 
         System.out.println("\t\t Lista - Quantidade : " + lista_Inteiros.getQuantidade());
+
+    }
+
+
+    public void trocarLista() {
+
+        System.out.println("\t LISTA :: TROCAR");
+
+
+        Lista<Integer> lista_A = new Lista<Integer>();
+
+        lista_A.adicionar(10);
+        lista_A.adicionar(20);
+        lista_A.adicionar(30);
+        lista_A.adicionar(40);
+        lista_A.adicionar(50);
+
+        System.out.println("\t\t - Lista A = " + getLista(lista_A));
+
+        System.out.println("\t\t\t - Trocar 0 e 1");
+        lista_A.trocar(0, 1);
+        System.out.println("\t\t\t - Lista A = " + getLista(lista_A));
+
+        System.out.println("\t\t\t - Trocar 4 e 3");
+        lista_A.trocar(4, 3);
+        System.out.println("\t\t\t - Lista A = " + getLista(lista_A));
+
+
+
+        System.out.println("\t\t\t - Quantidade : " + lista_A.getQuantidade());
+
+
+    }
+
+
+    public void ordenarLista() {
+
+        System.out.println("\t LISTA :: ORDENAR");
+
+
+        Lista<Integer> lista_A = new Lista<Integer>();
+
+        lista_A.adicionar(40);
+        lista_A.adicionar(20);
+        lista_A.adicionar(50);
+        lista_A.adicionar(10);
+        lista_A.adicionar(30);
+
+        System.out.println("\t\t - Lista A = " + getLista(lista_A));
+
+        System.out.println("\t\t\t - Ordenar Crescente");
+
+        lista_A.ordenarCrescente(new OrdenadorInt());
+
+        System.out.println("\t\t\t - Lista A = " + getLista(lista_A));
+
+        System.out.println("\t\t\t - Embaralhar");
+        lista_A.embaralhar();
+
+        System.out.println("\t\t\t - Lista A = " + getLista(lista_A));
+
+
+        System.out.println("\t\t\t - Ordenar Decrescente");
+
+        lista_A.ordenarDecrescente(new OrdenadorInt());
+
+        System.out.println("\t\t\t - Lista A = " + getLista(lista_A));
+
+
+        System.out.println("\t\t\t - Quantidade : " + lista_A.getQuantidade());
+
 
     }
 

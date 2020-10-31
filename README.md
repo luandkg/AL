@@ -1,8 +1,12 @@
 
  
-### ALGORITMOS
+# ALGORITMOS
+
+    - Desenvolvedor : Luan Freitas
+    - Ideia : Biblioteca de Algoritmos
 
   ## VETOR
+  
         - Criar
         - getCapacidade
         - set
@@ -11,6 +15,7 @@
         - reduzir
         
   ## LISTA   
+  
         - Criar
         - Adicionar
         - getQuantidade
@@ -26,5 +31,6 @@
         - Para Completar
         
   ## ITERADOR
+  
         - Vetor
         - Lista

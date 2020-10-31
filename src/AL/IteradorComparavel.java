@@ -1,9 +1,9 @@
 package AL;
 
-public class Iterador<T> {
+public class IteradorComparavel<T, C extends Comparador<T>> {
 
-    private Lista<T> mLista;
-    private Vetor<T> mVetor;
+
+    private Unica<T, C> mUnica;
 
     private boolean mIniciado;
     private boolean mFinalizado;
@@ -12,33 +12,19 @@ public class Iterador<T> {
 
     private int mTipo;
 
-    public Iterador(Lista<T> eLista) {
 
-        mLista = eLista;
+    public IteradorComparavel(Unica<T, C> eLista) {
 
-        mIniciado = false;
-        mFinalizado = false;
-        mIndice = 0;
-        mQuantidade = 0;
-
-        mTipo = 0;
-
-    }
-
-    public Iterador(Vetor<T> eVetor) {
-
-        mVetor = eVetor;
+        mUnica = eLista;
 
         mIniciado = false;
         mFinalizado = false;
         mIndice = 0;
         mQuantidade = 0;
 
-        mTipo = 1;
+        mTipo = 2;
 
     }
-
-
 
     public void iniciar() {
 
@@ -47,11 +33,8 @@ public class Iterador<T> {
 
         mIndice = 0;
 
-        if (mTipo == 0) {
-            mQuantidade = mLista.getQuantidade();
-        } else if (mTipo == 1) {
-            mQuantidade = mVetor.getCapacidade();
-      }
+
+        mQuantidade = mUnica.getQuantidade();
 
 
     }
@@ -109,13 +92,9 @@ public class Iterador<T> {
             throw new IllegalArgumentException("Iterador finalizado !");
         }
 
-        if (mTipo == 0) {
-            return mLista.getValor(mIndice);
-        } else if (mTipo == 1) {
-            return mVetor.get(mIndice);
-       }
 
-        return null;
+        return mUnica.getValor(mIndice);
+
 
     }
 
@@ -191,11 +170,8 @@ public class Iterador<T> {
         if (temAntes()) {
 
 
-            if (mTipo == 0) {
-                return mLista.getValor(mIndice - 1);
-            } else if (mTipo == 1) {
-                return mVetor.get(mIndice - 1);
-           }
+            return mUnica.getValor(mIndice - 1);
+
 
         } else {
 
@@ -203,7 +179,6 @@ public class Iterador<T> {
 
         }
 
-        return null;
 
     }
 
@@ -211,11 +186,8 @@ public class Iterador<T> {
         if (temDepois()) {
 
 
-            if (mTipo == 0) {
-                return mLista.getValor(mIndice + 1);
-            } else if (mTipo == 1) {
-                return mVetor.get(mIndice + 1);
-           }
+            return mUnica.getValor(mIndice + 1);
+
 
         } else {
 
@@ -223,7 +195,6 @@ public class Iterador<T> {
 
         }
 
-        return null;
 
     }
 

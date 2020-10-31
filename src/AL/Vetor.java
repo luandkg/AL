@@ -44,38 +44,37 @@ public class Vetor<T> {
     }
 
 
+    public void setVarios(int eIndice, T eValor1, T eValor2) {
 
-    public void setVarios(int eIndice,T eValor1, T eValor2){
-
-        set(eIndice,eValor1);
-        set(eIndice + 1,eValor2);
-
-    }
-
-    public void setVarios(int eIndice,T eValor1, T eValor2,T eValor3){
-
-        set(eIndice,eValor1);
-        set(eIndice + 1,eValor2);
-        set(eIndice + 2,eValor3);
+        set(eIndice, eValor1);
+        set(eIndice + 1, eValor2);
 
     }
 
-    public void setVarios(int eIndice,T eValor1, T eValor2,T eValor3,T eValor4){
+    public void setVarios(int eIndice, T eValor1, T eValor2, T eValor3) {
 
-        set(eIndice,eValor1);
-        set(eIndice + 1,eValor2);
-        set(eIndice + 2,eValor3);
-        set(eIndice + 3,eValor4);
+        set(eIndice, eValor1);
+        set(eIndice + 1, eValor2);
+        set(eIndice + 2, eValor3);
 
     }
 
-    public void setVarios(int eIndice,T eValor1, T eValor2,T eValor3,T eValor4,T eValor5){
+    public void setVarios(int eIndice, T eValor1, T eValor2, T eValor3, T eValor4) {
 
-        set(eIndice,eValor1);
-        set(eIndice + 1,eValor2);
-        set(eIndice + 2,eValor3);
-        set(eIndice + 3,eValor4);
-        set(eIndice + 4,eValor5);
+        set(eIndice, eValor1);
+        set(eIndice + 1, eValor2);
+        set(eIndice + 2, eValor3);
+        set(eIndice + 3, eValor4);
+
+    }
+
+    public void setVarios(int eIndice, T eValor1, T eValor2, T eValor3, T eValor4, T eValor5) {
+
+        set(eIndice, eValor1);
+        set(eIndice + 1, eValor2);
+        set(eIndice + 2, eValor3);
+        set(eIndice + 3, eValor4);
+        set(eIndice + 4, eValor5);
 
     }
 
@@ -120,6 +119,49 @@ public class Vetor<T> {
 
         mDados = mDadosMenos;
         mCapacidade = eNovaCapacidade;
+
+    }
+
+
+    public void trocar(int i1, int i2) {
+
+        T auxiliar = mDados[i1];
+
+        mDados[i1] = mDados[i2];
+        mDados[i2] = auxiliar;
+
+    }
+
+
+    public void ordenarCrescente(Ordenador<T> mOrdenador) {
+
+        int tam = mCapacidade;
+
+        for(int i = 0; i<tam; i++){
+            for(int j = 0; j<tam-1; j++){
+                if (mOrdenador.isMaior(get(j),get(j+1))){
+
+                    trocar(j,j+1);
+                }
+            }
+        }
+
+
+    }
+
+    public void ordenarDecrescente(Ordenador<T> mOrdenador) {
+
+        int tam = mCapacidade;
+
+        for(int i = 0; i<tam; i++){
+            for(int j = 0; j<tam-1; j++){
+                if (mOrdenador.isMenor(get(j),get(j+1))){
+
+                    trocar(j,j+1);
+                }
+            }
+        }
+
 
     }
 

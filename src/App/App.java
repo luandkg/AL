@@ -16,6 +16,12 @@ public class App {
         AppLista mAppLista = new AppLista();
         mAppLista.init();
 
+        AppProtetor mAppProtetor = new AppProtetor();
+      //  mAppProtetor.init();
+
+
+        AppUnica mAppUnica = new AppUnica();
+     //   mAppUnica.init();
 
     }
 
