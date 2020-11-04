@@ -67,3 +67,6 @@
         - Ordenador Abstrato
         - Ordenador Int
         
+## LISTA
+    
+![Lista](https://raw.githubusercontent.com/luandkg/AL/master/res/lista.png)

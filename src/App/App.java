@@ -17,11 +17,15 @@ public class App {
         mAppLista.init();
 
         AppProtetor mAppProtetor = new AppProtetor();
-      //  mAppProtetor.init();
+        mAppProtetor.init();
 
 
         AppUnica mAppUnica = new AppUnica();
-     //   mAppUnica.init();
+        mAppUnica.init();
+
+
+        AppRecursos mRecursos = new AppRecursos();
+        mRecursos.init("res/");
 
     }
 
